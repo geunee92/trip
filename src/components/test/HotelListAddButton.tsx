@@ -12,8 +12,6 @@ function random(min: number, max: number) {
 function HotelListAddButton() {
   const batch = writeBatch(store)
 
-  console.log(store, COLLECTIONS)
-
   const handleButtonClick = () => {
     const hotels = HOTEL_NAMES.map((hotelName, idx) => {
       return {
