@@ -6,6 +6,7 @@ import Carousel from '@components/hotel/Carousel'
 import Contents from '@/components/hotel/Contents'
 import Rooms from '@/components/hotel/Rooms'
 import Map from '@components/hotel/Map'
+import RecommendHotels from '@/components/hotel/RecommendHotels'
 
 function HotelPage() {
   const { id } = useParams() as { id: string }
@@ -16,7 +17,7 @@ function HotelPage() {
     return <div>Loading...</div>
   }
 
-  const { name, comment, images, contents } = data
+  const { name, comment, images, contents, recommendHotels } = data
 
   return (
     <div>
@@ -29,6 +30,8 @@ function HotelPage() {
       <Contents contents={contents} />
 
       <Map location={data.location} />
+
+      <RecommendHotels recommendHotels={recommendHotels} />
     </div>
   )
 }
