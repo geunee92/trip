@@ -5,6 +5,7 @@ import useHotel from '@components/hotel/hooks/useHotel'
 import Carousel from '@components/hotel/Carousel'
 import Contents from '@/components/hotel/Contents'
 import Rooms from '@/components/hotel/Rooms'
+import Map from '@components/hotel/Map'
 
 function HotelPage() {
   const { id } = useParams() as { id: string }
@@ -23,9 +24,11 @@ function HotelPage() {
 
       <Carousel images={images} />
 
+      <Rooms hotelId={id} />
+
       <Contents contents={contents} />
 
-      <Rooms hotelId={id} />
+      <Map location={data.location} />
     </div>
   )
 }
