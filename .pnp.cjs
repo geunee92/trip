@@ -45,6 +45,7 @@ const RAW_RUNTIME_STATE =
           ["eslint-plugin-react-refresh", "virtual:448108fcd0008d25333fd5002bfb18b484e77aa87dd4cc6594d7ec5ff9111c505041b2bd1909dd9282ddba66b343ae5b28bbfb35e3c22456e896861c0dd9972b#npm:0.4.19"],\
           ["firebase", "npm:11.6.0"],\
           ["globals", "npm:15.15.0"],\
+          ["jotai", "virtual:448108fcd0008d25333fd5002bfb18b484e77aa87dd4cc6594d7ec5ff9111c505041b2bd1909dd9282ddba66b343ae5b28bbfb35e3c22456e896861c0dd9972b#npm:2.12.2"],\
           ["love_trip", "workspace:."],\
           ["prettier", "npm:3.5.3"],\
           ["react", "npm:19.1.0"],\
@@ -5348,6 +5349,28 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["jotai", [\
+      ["npm:2.12.2", {\
+        "packageLocation": "../../.yarn/berry/cache/jotai-npm-2.12.2-2169671569-10c0.zip/node_modules/jotai/",\
+        "packageDependencies": [\
+          ["jotai", "npm:2.12.2"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:448108fcd0008d25333fd5002bfb18b484e77aa87dd4cc6594d7ec5ff9111c505041b2bd1909dd9282ddba66b343ae5b28bbfb35e3c22456e896861c0dd9972b#npm:2.12.2", {\
+        "packageLocation": "./.yarn/__virtual__/jotai-virtual-01ef95208d/3/.yarn/berry/cache/jotai-npm-2.12.2-2169671569-10c0.zip/node_modules/jotai/",\
+        "packageDependencies": [\
+          ["@types/react", "npm:19.0.14"],\
+          ["jotai", "virtual:448108fcd0008d25333fd5002bfb18b484e77aa87dd4cc6594d7ec5ff9111c505041b2bd1909dd9282ddba66b343ae5b28bbfb35e3c22456e896861c0dd9972b#npm:2.12.2"],\
+          ["react", "npm:19.1.0"]\
+        ],\
+        "packagePeers": [\
+          "@types/react",\
+          "react"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["js-sha3", [\
       ["npm:0.8.0", {\
         "packageLocation": "../../.yarn/berry/cache/js-sha3-npm-0.8.0-decf3ddcfa-10c0.zip/node_modules/js-sha3/",\
@@ -5569,6 +5592,7 @@ const RAW_RUNTIME_STATE =
           ["eslint-plugin-react-refresh", "virtual:448108fcd0008d25333fd5002bfb18b484e77aa87dd4cc6594d7ec5ff9111c505041b2bd1909dd9282ddba66b343ae5b28bbfb35e3c22456e896861c0dd9972b#npm:0.4.19"],\
           ["firebase", "npm:11.6.0"],\
           ["globals", "npm:15.15.0"],\
+          ["jotai", "virtual:448108fcd0008d25333fd5002bfb18b484e77aa87dd4cc6594d7ec5ff9111c505041b2bd1909dd9282ddba66b343ae5b28bbfb35e3c22456e896861c0dd9972b#npm:2.12.2"],\
           ["love_trip", "workspace:."],\
           ["prettier", "npm:3.5.3"],\
           ["react", "npm:19.1.0"],\

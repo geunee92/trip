@@ -6,12 +6,13 @@ import Flex from '@shared/Flex'
 import Button from '@shared/Button'
 
 import { useCallback } from 'react'
+import { useAtomValue } from 'jotai'
+import { userAtom } from '@/atoms/user'
 
 function Navbar() {
   const location = useLocation()
 
-  // TODO 차후 수정
-  const user = null
+  const user = useAtomValue(userAtom)
 
   const showSignButton =
     ['/signup', '/signin'].includes(location.pathname) === false
@@ -20,7 +21,16 @@ function Navbar() {
     if (user != null) {
       return (
         <Link to="/my">
-          <img src="" alt="이미지" />
+          <img
+            src={
+              user.photoURL ??
+              'https://cdn1.iconfinder.com/data/icons/user-pictures/101/malecostume-128.png'
+            }
+            alt="유저의 이미지"
+            width={40}
+            height={40}
+            style={{ borderRadius: '100%' }}
+          />
         </Link>
       )
     }
@@ -38,7 +48,7 @@ function Navbar() {
 
   return (
     <Flex justify="space-between" align="center" css={navbarContainerStyles}>
-      <Link to="/">홈</Link>
+      <Link to="/">Love Trip</Link>
 
       {renderButton()}
     </Flex>

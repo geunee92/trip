@@ -20,7 +20,7 @@ function useLoadKakao() {
         window.Kakao.init(import.meta.env.VITE_KAKAO_APP_KEY)
       }
     }
-  })
+  }, [])
 }
 
 export default useLoadKakao

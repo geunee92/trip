@@ -5,6 +5,7 @@ import App from './App.tsx'
 import { Global } from '@emotion/react'
 import globalStyles from './styles/globalStyles'
 import { QueryClient, QueryClientProvider } from 'react-query'
+import { Provider } from 'jotai'
 
 const client = new QueryClient({
   defaultOptions: {
@@ -16,9 +17,11 @@ const client = new QueryClient({
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <Global styles={globalStyles} />
-    <QueryClientProvider client={client}>
-      <App />
-    </QueryClientProvider>
+    <Provider>
+      <Global styles={globalStyles} />
+      <QueryClientProvider client={client}>
+        <App />
+      </QueryClientProvider>
+    </Provider>
   </StrictMode>,
 )
