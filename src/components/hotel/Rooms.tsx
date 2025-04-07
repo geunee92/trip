@@ -1,5 +1,7 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
+import qs from 'qs'
+import { useNavigate } from 'react-router-dom'
 
 import Flex from '@shared/Flex'
 import Text from '@shared/Text'
@@ -9,10 +11,18 @@ import Spacing from '@shared/Spacing'
 import Button from '@shared/Button'
 import addDelimiter from '@/utils/addDelimiter'
 
+import { useAlertContext } from '@/contexts/AlertContext'
+
 import useRooms from './hooks/useRooms'
+import { userAtom } from '@/atoms/user'
+import { useAtomValue } from 'jotai'
 
 function Rooms({ hotelId }: { hotelId: string }) {
   const { data } = useRooms({ hotelId })
+
+  const user = useAtomValue(userAtom)
+  const { open } = useAlertContext()
+  const navigate = useNavigate()
 
   return (
     <Container>
@@ -30,6 +40,14 @@ function Rooms({ hotelId }: { hotelId: string }) {
         {data?.map((room) => {
           const isDeadline = room.avaliableCount === 1
           const isSoldOut = room.avaliableCount === 0
+
+          const params = qs.stringify(
+            {
+              roomId: room.id,
+              hotelId,
+            },
+            { addQueryPrefix: true },
+          )
 
           return (
             <ListRow
@@ -60,7 +78,25 @@ function Rooms({ hotelId }: { hotelId: string }) {
                 />
               }
               right={
-                <Button size="medium" disabled={isSoldOut}>
+                <Button
+                  size="medium"
+                  disabled={isSoldOut}
+                  onClick={() => {
+                    if (user === null) {
+                      // 로그인전
+                      open({
+                        title: '로그인이 필요한 기능입니다',
+                        onButtonClick: () => {
+                          navigate('/signin')
+                        },
+                      })
+
+                      return
+                    }
+
+                    navigate(`/schedule${params}`)
+                  }}
+                >
                   {isSoldOut === true ? '매진' : '선택'}
                 </Button>
               }

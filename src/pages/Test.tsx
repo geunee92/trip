@@ -1,3 +1,4 @@
+import HotelFormAddButton from '@/components/test/HotelFormAddButton'
 import RecommendHotelButton from '@/components/test/RecommendHotelButton'
 import HotelListAddButton from '@components/test/HotelListAddButton'
 
@@ -7,6 +8,8 @@ function Test() {
       <HotelListAddButton />
 
       <RecommendHotelButton />
+
+      <HotelFormAddButton />
     </div>
   )
 }
