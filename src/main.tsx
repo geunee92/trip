@@ -6,6 +6,7 @@ import { Global } from '@emotion/react'
 import globalStyles from './styles/globalStyles'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { Provider } from 'jotai'
+import { AlertContextProvider } from './contexts/AlertContext.tsx'
 
 const client = new QueryClient({
   defaultOptions: {
@@ -20,7 +21,9 @@ createRoot(document.getElementById('root')!).render(
     <Provider>
       <Global styles={globalStyles} />
       <QueryClientProvider client={client}>
-        <App />
+        <AlertContextProvider>
+          <App />
+        </AlertContextProvider>
       </QueryClientProvider>
     </Provider>
   </StrictMode>,

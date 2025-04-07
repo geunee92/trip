@@ -1,18 +1,42 @@
 import { css } from '@emotion/react'
 import { differenceInMilliseconds, parseISO } from 'date-fns'
-import { Hotel as IHotel } from '@/models/hotel'
+import { Hotel } from '@/models/hotel'
 import ListRow from '@shared/ListRow'
 import Flex from '@shared/Flex'
 import Text from '@shared/Text'
 import Spacing from '@shared/Spacing'
 import addDelimiter from '@/utils/addDelimiter'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, MouseEvent } from 'react'
 import formatTime from '@/utils/formatTime'
 import Tag from '../shared/Tag'
 import { Link } from 'react-router-dom'
 
-function HotelItem({ hotel }: { hotel: IHotel }) {
+function HotelItem({
+  hotel,
+  isLike,
+  onLike,
+}: {
+  hotel: Hotel
+  isLike: boolean
+  onLike: ({
+    hotel,
+  }: {
+    hotel: Pick<Hotel, 'name' | 'id' | 'mainImageUrl'>
+  }) => void
+}) {
   const [remainedTime, setRemainedTime] = useState(0)
+
+  const handleLike = (e: MouseEvent<HTMLImageElement>) => {
+    e.preventDefault()
+
+    onLike({
+      hotel: {
+        name: hotel.name,
+        mainImageUrl: hotel.mainImageUrl,
+        id: hotel.id,
+      },
+    })
+  }
 
   useEffect(() => {
     if (hotel.events == null || hotel.events.promoEndTime == null) {
@@ -84,7 +108,22 @@ function HotelItem({ hotel }: { hotel: IHotel }) {
             </Flex>
           }
           right={
-            <Flex direction="column" align="flex-end">
+            <Flex
+              direction="column"
+              align="flex-end"
+              style={{ position: 'relative' }}
+            >
+              <img
+                src={
+                  isLike
+                    ? 'https://cdn4.iconfinder.com/data/icons/twitter-29/512/166_Heart_Love_Like_Twitter-64.png'
+                    : 'https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-heart-outline-64.png'
+                }
+                alt=""
+                css={iconHeartStyles}
+                onClick={handleLike}
+              />
+
               <img src={hotel.mainImageUrl} alt="" css={imageStyles} />
 
               <Spacing size={8} />
@@ -109,6 +148,14 @@ const imageStyles = css`
   border-radius: 8px;
   object-fit: cover;
   margin-left: 16px;
+`
+
+const iconHeartStyles = css`
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 30px;
+  height: 30px;
 `
 
 export default HotelItem
