@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 
 function Carousel({ images }: { images: string[] }) {
+  console.log('자동배포 테스트')
   return (
     <div>
       <Swiper css={containerStyles} spaceBetween={8}>
